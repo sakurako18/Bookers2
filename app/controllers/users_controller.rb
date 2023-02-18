@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  
-    def new
+
+  def new
     @book = Book.new
   end
 
@@ -14,5 +14,5 @@ class UsersController < ApplicationController
     redirect_to '/top'
   end
 
-  
+
 end
