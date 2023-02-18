@@ -1,20 +1,24 @@
-<h1>User info</h1>
+
+  <h2>User info</h2>
+　name</dr>
+　introduction</dr>
+<div class="col-lg-8">
+
+  <h2>New book</h2>
+  <%= form_with model: @book, url: '/books', method: :post do |f| %>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+
+    <h4>Opinion</h4>
+    <%= f.text_area :body %></dr>
+
+    <%= f.submit 'Create Book' %>
+  <% end %>
 
 
-<h1>New book</h1>
-<%= form_with model: @book, url: '/books', method: :post do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
+  <h2>Books</h2>
 
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-
-  <%= f.submit 'Create Book' %>
-<% end %>
-
-
-<h2>Books</h2>
-
+  <table class="table table-striped">
 <% @books.each do |book| %>
   <div>
   <%= link_to book_path(book.id) do %>
@@ -22,5 +26,6 @@
   <%= book.title %>
   <%= book.body %>
   <% end %>
+  </table>
   </div>
 <% end %>
