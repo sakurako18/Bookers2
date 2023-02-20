@@ -1,31 +1,42 @@
-
-  <h2>User info</h2>
-　name</dr>
-　introduction</dr>
-<div class="col-lg-8">
-
-  <h2>New book</h2>
-  <%= form_with model: @book, url: '/books', method: :post do |f| %>
-    <h4>Title</h4>
-    <%= f.text_field :title %>
-
-    <h4>Opinion</h4>
-    <%= f.text_area :body %></dr>
-
-    <%= f.submit 'Create Book' %>
-  <% end %>
-
-
-  <h2>Books</h2>
-
-  <table class="table table-striped">
-<% @books.each do |book| %>
-  <div>
-  <%= link_to book_path(book.id) do %>
-  <%= image_tag book.user.get_profile_image %>
-  <%= book.title %>
-  <%= book.body %>
-  <% end %>
-  </table>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'booklist', books: @books %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>
+            </th>
+            <th>
+              Title
+            </th>
+            <th>
+              Opinion
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td>
+              <%= link_to book_path(book.id) do %>
+              <%= image_tag book.user.get_profile_image %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book.title, root_path %>
+            <%=  %>
+            </td>
+            <td>
+            <%= book.body %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-<% end %>
+</div>

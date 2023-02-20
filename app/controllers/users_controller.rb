@@ -14,5 +14,10 @@ class UsersController < ApplicationController
     redirect_to '/top'
   end
 
+  def show
 
+  end
+
+  def edit
+  end
 end
