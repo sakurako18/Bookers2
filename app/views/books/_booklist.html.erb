@@ -1,5 +1,5 @@
   <h2>User info</h2>
-      <%= image_tag @user.get_profile_image %>
+      <%= image_tag user.get_profile_image, size: '100x100' %>
       <table class="table">
       <tbody>
         <tr>
@@ -12,14 +12,16 @@
         </tr>
       </tbody>
       </table>
-      <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up"><i class="fas fa-user-cog"></i></a>
 
+        <%= link_to edit_user_path(current_user), class:'btn btn-outline-secondary btn-block' do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
 
       <h2>New book</h2>
-      <%= form_with model: @book, url: '/books', method: :post do |f| %>
+      <%= form_with model: book, url: '/books', method: :post do |f| %>
       <label for="book_title">Title</label><br>
-        <%= f.text_field :title %><br>
+        <%= f.text_field :title, class:"form-control" %><br>
       <label for="book_opinion">Opinion</label><br>
-        <%= f.text_area :body %></dr>
-        <%= link_to 'Create Book', new_book_path, class: "btn btn-success" %>
+        <%= f.text_area :body, class:"form-control" %></dr>
+        <%= f.submit "Create Book", class: "btn btn-success" %>
       <% end %>

@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
-  <div class="container">
-    <div class="row">
-    <div class="col-md-3">
   <h2>User info</h2>
-
-別のユーザー
-
+      <%= image_tag user.get_profile_image, size: '100x100' %>
       <table class="table">
       <tbody>
         <tr>
           <th>name</th>
-          <th><%= current_user.name %></th>
+          <th><%= user.name %></th>
           </tr>
           <tr>
           <th>introduction</th>
-          <th><%= current_user.introduction %></th>
+          <th><%= user.introduction %></th>
         </tr>
       </tbody>
       </table>
+
+        <%= link_to edit_user_path(user), class:'btn btn-outline-secondary btn-block' do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
+
       <h2>New book</h2>
-      <%= form_with model: @book, url: '/books', method: :post do |f| %>
-        <h4>Title</h4>
-        <%= f.text_field :title %>
-        <h4>Opinion</h4>
-        <%= f.text_area :body %></dr>
-        <%= link_to 'Create Book', Book.new, class: "btn btn-success" %>
+      <%= form_with model: book, url: '/books', method: :post do |f| %>
+      <label for="book_title">Title</label><br>
+        <%= f.text_field :title, class:"form-control" %><br>
+      <label for="book_opinion">Opinion</label><br>
+        <%= f.text_area :body, class:"form-control" %></dr>
+        <%= f.submit "Create Book", class: "btn btn-success" %>
       <% end %>
-    </div>
-    </div>
-  </div>
