@@ -8,7 +8,7 @@
             <table class="table">
             <tbody>
               <tr>
-                <td><%= link_to book_path(@book.id) do %>
+                <td><%= link_to user_path(@book.user.id) do %>
                     <%= image_tag @book.user.get_profile_image, size: '100x100' %>
                     <%= current_user.name %>
                     <% end %>
@@ -19,12 +19,14 @@
                 <td>
                   <%= @book.body %>
                 </td>
+                  <% if current_user == @book.user  %>
                 <td>
                     <%= link_to "Edit", edit_book_path(@book), class: "btn btn-success"%>
                 </td>
                 <td>
                     <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger"%>
                 </td>
+                  <% end %>
               </tr>
             </tbody>
             </table>

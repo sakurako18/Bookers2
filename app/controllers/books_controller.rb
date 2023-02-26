@@ -8,7 +8,6 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new
 
-
   end
 
   def create
@@ -46,13 +45,13 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to '/users'
+    redirect_to '/books'
   end
 
   private
 
   def book_params
-    params.permit(:title, :body)
+    params.require(:book).permit(:title, :body)
   end
 
 end
